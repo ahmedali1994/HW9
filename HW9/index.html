@@ -1,0 +1,130 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+<body>
+    <div id="meanbox">
+        <p id="msg"></p>
+        <input id="box1" type="text" />
+        <input id="box2" type="text" />
+        <input id="box3" type="text" />
+        <p id="msg"></p>
+        <button id="bttn">SPIN NOW</button>
+        <button id="close">X</button>
+
+    </div>
+    <p id="goodbye">GOOD BYE</p>
+
+    <script>
+        $(document).ready(function ()
+        {
+            $("#bttn").mouseenter(function () {
+                $("#bttn").addClass("btn")
+
+            });
+        });
+
+        $(document).ready(function ()
+        {
+            $("#close").click(function () {
+                $("#meanbox").fadeOut(2000);
+                $("#goodbye").fadeIn(2000)
+            });
+        });
+
+        $(document).ready(function ()
+        {
+            $("#bttn").click(function () {
+                location.reload();
+            });
+        });
+        
+        function getRndNum() {
+
+            var num = 0;
+
+            do {
+                num = Math.floor(Math.random() * 10 + 1);
+            } while (num == 0 || num >= 4)
+
+            return num;
+        }
+        
+        function boxProcess() {
+            debugger;
+            var ronNum = getRndNum(); //Math.floor(Math.random() * 10 + 1)
+            var bx1 = "#bx1";
+            var bx2;
+            var bx3;
+            var msg;
+            
+            for (i = 0; i <= 10; i++) {
+                if (ronNum == 1) {
+                    $('#box1').addClass('three')
+                }
+                else if (ronNum == 2) {
+                    $('#box1').addClass('one')
+                }
+
+                else if (ronNum == 3) {
+                    $('#box1').addClass('two')
+                }
+                
+            }
+
+            for (i = 0; i <= 10; i++) {
+                if (ronNum == 1) {
+                    $('#box2').addClass('two')
+                }
+
+                else if (ronNum == 2) {
+                    $('#box2').addClass('three')
+                }
+
+                else if (ronNum == 3) {
+                    $('#box2').addClass('one')
+                }
+            }
+
+            for (i = 0; i <= 10; i++) {
+                if (ronNum == 1) {
+                    $('#box3').addClass('one')
+                }
+
+                else if (ronNum == 2) {
+                    $('#box3').addClass('three')
+                }
+
+                else if (ronNum == 3) {
+                    $('#box3').addClass('two')
+                }
+
+            }
+
+            for (i = 0; i <= 10; i++) {
+                if (bx1 == bx2 && bx2 == bx3) {
+                    msg = document.getElementById('msg').innerHTML = 'Congratulations you won!!!'
+                }
+                else {
+                    msg = document.getElementById('msg').innerHTML = 'Sorry try again'
+                }
+
+            }
+
+        }
+        
+        boxProcess();
+    </script>
+
+
+
+
+
+
+</body>
+</html>
